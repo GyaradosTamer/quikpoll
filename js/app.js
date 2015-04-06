@@ -387,10 +387,9 @@ function ShowQuestionForm() {
 
     for(var i = 0; i < myDoc.pollCounts.length; i++) {
         var letter = String.fromCharCode(65 + i);
-        $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + '</div>');
+        $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'penisssssssss</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
-    $("#app").append('<div class="random" id="blehhhh">They want the ...</div>');
     $("#app").append('<img src="images/EGG-2.png" class="omlet_second"></img>');
 }
 
