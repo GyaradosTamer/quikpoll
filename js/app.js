@@ -112,7 +112,7 @@ function InitialDocument() {
     for(var i = 0; i < responseCount; i++) {
         var response = $('input[id=answer'+i+']').val();
         if(response.length > 0) {
-            poll['response'+count] = response+'PENIS';
+            poll['response'+count] = response;
             pollCounts[count] = 0;
             responses.push(response);
             count++;
