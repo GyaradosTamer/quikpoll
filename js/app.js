@@ -197,8 +197,8 @@ function functionForResponse(response) {
 	} else {
             if (response >= myDoc.pollCounts.length) {
                 if ($('textarea#custom_answer').length == 0) {
-                    alert("Custom answers cannot be empty")
-                    return
+                    alert("Custom answers cannot be empty");
+                    return;
                 }
                 documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val, "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
