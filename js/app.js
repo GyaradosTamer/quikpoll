@@ -408,7 +408,7 @@ function ShowQuestionForm() {
         $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'abcd</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
-    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
+    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer???" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
     $('#other_submit').fastClick(functionForResponse(myDoc.pollCounts.length))
     $("#app").append('<img src="images/EGG-2.png" class="omlet_second"></img>');
 }
