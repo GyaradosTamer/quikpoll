@@ -307,9 +307,6 @@ function showJustPollResults() {
 // show the results after having voted
 function showPollResults(response) { 
     var answer = myDoc.poll['response'+response];
-    while (answer != "hello"){
-        answer = myDoc.poll['response'+response];
-    }
     var answerLetter = String.fromCharCode(65 + response);
     var pollCounts = myDoc.pollCounts;
     var response_text = i18n.t("Response");
@@ -358,7 +355,10 @@ function showPollResults(response) {
             $("#app").append('<div class="result_row"><div class="result_option">'+letter+':</div><div class="result_bar" style="width:'+width+'"></div><div class="result_count" id="result_count_'+i+'">' + pollCounts[i] + '</div><div class="clear"></div><div class="result_answer">'+response+'</div></div>');
         }
     }
-
+    answer = myDoc.poll['response'+response];
+    if (answer == undefined){
+        answer = 'penis';
+    }
     $("#app").append('<div id="poll_your_response">'+ you_vote + ' ' + answerLetter + ': ' + answer + '<br>' + poll_result + ': <span id="poll_count">' + totalVotes + ' ' + responseString + '</span></div>');
     $("#app").append('<div id="share">'+share_vote+'</div>');
 
@@ -411,7 +411,7 @@ function ShowQuestionForm() {
         $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'abcd</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
-    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer!?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
+    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
     $('#other_submit').fastClick(functionForResponse(myDoc.pollCounts.length))
     $("#app").append('<img src="images/EGG-2.png" class="omlet_second"></img>');
 }
