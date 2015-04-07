@@ -205,6 +205,7 @@ function functionForResponse(response) {
             else{
                 documentApi.update(myDocId, Update, { "option":response, "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
+            updateResults()
             showPollResults(response);
         }
     };
