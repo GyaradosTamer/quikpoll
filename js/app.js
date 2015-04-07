@@ -307,6 +307,9 @@ function showJustPollResults() {
 // show the results after having voted
 function showPollResults(response) { 
     var answer = myDoc.poll['response'+response];
+    while (answer == undefined){
+        answer = myDoc.poll['response'+response];
+    }
     var answerLetter = String.fromCharCode(65 + response);
     var pollCounts = myDoc.pollCounts;
     var response_text = i18n.t("Response");
