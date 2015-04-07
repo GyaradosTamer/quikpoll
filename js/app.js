@@ -92,9 +92,18 @@ function Initialize(old, params) {
 // Any other time we call update, we're not passing in the full doc, just a set of params
 // for updating the old doc
 function Update(old, params) {
-    old.pollCounts[params["option"]]++;
-    var time = new Date().getTime();
-    old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
+    if (params["option"] > old.pollCounts.length-1){
+        old.poll['response' + params["option"]] = params["new_response"]
+        old.pollCounts[params["option"]] = 1;
+        old.poll.responses.push(params["new_response"])
+        var time = new Date().getTime();
+        old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time}
+    }
+    else{
+        old.pollCounts[params["option"]]++;
+        var time = new Date().getTime();
+        old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
+    }
     return old;
 };
 
@@ -186,7 +195,16 @@ function functionForResponse(response) {
 	    var voter = myDoc.voters[Omlet.getIdentity().principal];
 	    showPollResults(voter.vote);
 	} else {
-            documentApi.update(myDocId, Update, { "option":response, "voter":Omlet.getIdentity() }, ReceiveUpdate);
+            if (response > myDoc.pollCounts.length) {
+                if ($('textarea#custom_answer').length == 0) {
+                    alert("Custom answers cannot be empty")
+                    return
+                }
+                documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val, "voter":Omlet.getIdentity() }, ReceiveUpdate);
+            }
+            else{
+                documentApi.update(myDocId, Update, { "option":response, "voter":Omlet.getIdentity() }, ReceiveUpdate);
+            }
             showPollResults(response);
         }
     };
@@ -390,8 +408,8 @@ function ShowQuestionForm() {
         $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'abcd</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
-    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?"></textarea></div><div id="other_submit">Submit</div>')
-    // $('other_answer').fastClick()
+    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
+    $('#other_submit').fastClick(functionForResponse(myDoc.pollCounts.length+1))
     $("#app").append('<img src="images/EGG-2.png" class="omlet_second"></img>');
 }
 
