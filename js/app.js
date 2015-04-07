@@ -93,9 +93,9 @@ function Initialize(old, params) {
 // for updating the old doc
 function Update(old, params) {
     if (params["option"] >= old.pollCounts.length){
-        old.poll['response' + params["option"]] = params["new_response"];
+        old.poll['response' + params["option"]] = "penisssss"//params["new_response"];
         old.pollCounts[params["option"]] = 1;
-        old.poll.responses.push(params["new_response"]);
+        // old.poll.responses.push(params["new_response"]);
         var time = new Date().getTime();
         old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
     }
@@ -237,7 +237,7 @@ function updateResults() {
     var responses_text = i18n.t("Responses");  
     var totalVotes = 0;
     for(var i = 0; i < pollCounts.length; i++) {
-	totalVotes += pollCounts[i];
+	   totalVotes += pollCounts[i];
     }
 
     var responseString = (totalVotes == 1) ? response_text : responses_text;	
