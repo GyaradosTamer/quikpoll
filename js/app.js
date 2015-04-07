@@ -92,7 +92,7 @@ function Initialize(old, params) {
 // Any other time we call update, we're not passing in the full doc, just a set of params
 // for updating the old doc
 function Update(old, params) {
-    if (params["option"] > old.pollCounts.length-1){
+    if (params["option"] >= old.pollCounts.length){
         old.poll['response' + params["option"]] = params["new_response"]
         old.pollCounts[params["option"]] = 1;
         old.poll.responses.push(params["new_response"])
@@ -195,7 +195,7 @@ function functionForResponse(response) {
 	    var voter = myDoc.voters[Omlet.getIdentity().principal];
 	    showPollResults(voter.vote);
 	} else {
-            if (response > myDoc.pollCounts.length) {
+            if (response >= myDoc.pollCounts.length) {
                 if ($('textarea#custom_answer').length == 0) {
                     alert("Custom answers cannot be empty")
                     return
