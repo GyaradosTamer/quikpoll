@@ -136,9 +136,10 @@ img.omlet_third {
 }
 #other_submit {
     float:left;
+    margin-left: 5px;
     margin-top:15px;
     margin-bottom:23px;
-    width:40px;
+    width:60px;
     min-height:42px;
     text-align:center;
     line-height:42px;
