@@ -308,9 +308,11 @@ function showJustPollResults() {
 
 // show the results after having voted
 function showPollResults(responSU) { 
+    alert(responSU);
     var answer = myDoc.poll['response'+responSU];
     var answerLetter = String.fromCharCode(65 + responSU);
     var pollCounts = myDoc.pollCounts;
+    alert(pollCounts.length);
     var response_text = i18n.t("Response");
     var responses_text = i18n.t("Responses");
     var share_vote = i18n.t("Share_vote");
@@ -325,7 +327,7 @@ function showPollResults(responSU) {
 
     var totalVotes = 0;
     for(var i = 0; i < pollCounts.length; i++) {
-	totalVotes += pollCounts[i];
+	   totalVotes += pollCounts[i];
     }
 
     var responseString = (totalVotes == 1) ? response_text : responses_text;
@@ -334,8 +336,8 @@ function showPollResults(responSU) {
     $("#app").append('<img src="images/EGG-3.png" class="omlet_third"></img><div id="poll_question">'+poll_question+'</div>');
 
     for(var i = 0; i < pollCounts.length; i++) {
+        alert(i);
         var response = myDoc.poll['response'+i];
-        alert(response)
         var letter = String.fromCharCode(65 + i);
         var percent = pollCounts[i] / totalVotes;
         var width = (percent > 0) ? percent * 200 : 1;
