@@ -135,6 +135,9 @@ img.omlet_third {
 #other_answer {
     float:left;
 }
+#custom_answer {
+    border-radius:10px;
+}
 #other_submit {
     float:left;
     margin-left: 5px;
