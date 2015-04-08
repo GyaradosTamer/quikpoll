@@ -94,8 +94,7 @@ function Initialize(old, params) {
 function Update(old, params) {
     if (params["option"] >= old.pollCounts.length){
         old.poll['response' + params["option"]] = params["new_response"];
-        // old.pollCounts[params["option"]] = 1;
-        alert(params["option"]);
+        old.pollCounts.push(1);
         //old.poll.responses.push(params["new_response"]);
         var time = new Date().getTime();
         old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
@@ -202,8 +201,8 @@ function functionForResponse(response) {
                     alert("Custom answers cannot be empty");
                     return;
                 }
-                myDoc.poll['response' + response] = $('textarea#custom_answer').val();
-                myDoc.pollCounts.push(1);
+                // myDoc.poll['response' + response] = $('textarea#custom_answer').val();
+                // myDoc.pollCounts.push(1);
                 documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val(), "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
             else{
@@ -310,11 +309,9 @@ function showJustPollResults() {
 
 // show the results after having voted
 function showPollResults(responSU) { 
-    alert(responSU);
     var answer = myDoc.poll['response'+responSU];
     var answerLetter = String.fromCharCode(65 + responSU);
     var pollCounts = myDoc.pollCounts;
-    alert(pollCounts.length);
     var response_text = i18n.t("Response");
     var responses_text = i18n.t("Responses");
     var share_vote = i18n.t("Share_vote");
@@ -329,7 +326,6 @@ function showPollResults(responSU) {
 
     var totalVotes = 0;
     for(var i = 0; i < pollCounts.length; i++) {
-        alert(i);
         totalVotes += pollCounts[i];
     }
 
@@ -339,7 +335,6 @@ function showPollResults(responSU) {
     $("#app").append('<img src="images/EGG-3.png" class="omlet_third"></img><div id="poll_question">'+poll_question+'</div>');
 
     for(var i = 0; i < pollCounts.length; i++) {
-        alert(i);
         var response = myDoc.poll['response'+i];
         var letter = String.fromCharCode(65 + i);
         var percent = pollCounts[i] / totalVotes;
