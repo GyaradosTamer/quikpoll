@@ -93,7 +93,7 @@ function Initialize(old, params) {
 // for updating the old doc
 function Update(old, params) {
     if (params["option"] >= old.pollCounts.length){
-        old.poll['response' + params["option"]] = params["new_response"];
+        old.poll['response' + params["option"]] = "goomcha";//params["new_response"];
         old.pollCounts[params["option"]] = 1;
         //old.poll.responses.push(params["new_response"]);
         var time = new Date().getTime();
@@ -201,7 +201,7 @@ function functionForResponse(response) {
                     alert("Custom answers cannot be empty");
                     return;
                 }
-                documentApi.update(myDocId, Update, { "option":response-1, "new_response": $('textarea#custom_answer').val(), "voter":Omlet.getIdentity() }, ReceiveUpdate);
+                documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val(), "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
             else{
                 documentApi.update(myDocId, Update, { "option":response, "voter":Omlet.getIdentity() }, ReceiveUpdate);
