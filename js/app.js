@@ -335,6 +335,11 @@ function showPollResults(responSU) {
 
     for(var i = 0; i < pollCounts.length; i++) {
         var response = myDoc.poll['response'+i];
+        if (response == "hello"){
+            while(true){
+
+            }
+        }
         var letter = String.fromCharCode(65 + i);
         var percent = pollCounts[i] / totalVotes;
         var width = (percent > 0) ? percent * 200 : 1;
