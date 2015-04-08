@@ -406,7 +406,7 @@ function ShowQuestionForm() {
 
     for(var i = 0; i < myDoc.pollCounts.length; i++) {
         var letter = String.fromCharCode(65 + i);
-        $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'abcd</div>');
+        $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + '</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
     $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
