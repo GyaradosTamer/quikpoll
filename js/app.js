@@ -94,7 +94,7 @@ function Initialize(old, params) {
 function Update(old, params) {
     if (params["option"] >= old.pollCounts.length){
         old.poll['response' + params["option"]] = params["new_response"];
-        old.pollCounts[params["option"]] = 1;
+        // old.pollCounts[params["option"]] = 1;
         alert(params["option"]);
         //old.poll.responses.push(params["new_response"]);
         var time = new Date().getTime();
@@ -203,6 +203,7 @@ function functionForResponse(response) {
                     return;
                 }
                 myDoc.poll['response' + response] = $('textarea#custom_answer').val();
+                myDoc.pollCounts[response] = 1;
                 documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val(), "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
             else{
@@ -414,7 +415,7 @@ function ShowQuestionForm() {
         $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'abcd</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
-    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answeRU?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
+    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
     $('#other_submit').fastClick(functionForResponse(myDoc.pollCounts.length))
     $("#app").append('<img src="images/EGG-2.png" class="omlet_second"></img>');
 }
