@@ -335,9 +335,7 @@ function showPollResults(responSU) {
 
     for(var i = 0; i < pollCounts.length; i++) {
         var response = myDoc.poll['response'+i];
-        if (response == "hello"){
-            alert("ajhgkhsajkgdsahklghskh");
-        }
+        alert(response)
         var letter = String.fromCharCode(65 + i);
         var percent = pollCounts[i] / totalVotes;
         var width = (percent > 0) ? percent * 200 : 1;
@@ -412,7 +410,7 @@ function ShowQuestionForm() {
         $("#app").append('<div class="poll_answer" id="submitquestion'+i+'">'+letter+': ' + myDoc.poll['response'+i] + 'abcd</div>');
         $("#submitquestion"+i).fastClick(functionForResponse(i));
     }
-    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answeRU?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
+    $("#app").append('<div id="other_answer"><textarea rows="1" cols="20" placeholder="Have another answer?" id="custom_answer"></textarea></div><div id="other_submit">Submit</div>')
     $('#other_submit').fastClick(functionForResponse(myDoc.pollCounts.length))
     $("#app").append('<img src="images/EGG-2.png" class="omlet_second"></img>');
 }
