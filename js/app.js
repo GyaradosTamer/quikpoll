@@ -94,11 +94,8 @@ function Initialize(old, params) {
 function Update(old, params) {
     if (params["option"] >= old.pollCounts.length){
         old.poll['response' + params["option"]] = params["new_response"];
-        old.pollCounts.push(1);
-        //old.poll.responses.push(params["new_response"]);
         var time = new Date().getTime();
         old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
-        // responseCount++;
     }
     else{
         old.pollCounts[params["option"]]++;
@@ -201,8 +198,8 @@ function functionForResponse(response) {
                     alert("Custom answers cannot be empty");
                     return;
                 }
-                // myDoc.poll['response' + response] = $('textarea#custom_answer').val();
-                // myDoc.pollCounts.push(1);
+                myDoc.poll['response' + response] = $('textarea#custom_answer').val();
+                myDoc.pollCounts.push(1);
                 documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val(), "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
             else{
