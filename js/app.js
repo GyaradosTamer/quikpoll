@@ -94,8 +94,10 @@ function Initialize(old, params) {
 function Update(old, params) {
     if (params["option"] >= old.pollCounts.length){
         old.poll['response' + params["option"]] = params["new_response"];
+        old.pollCounts[params["option"]] = 1;
         var time = new Date().getTime();
         old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
+        // responseCount++;
     }
     else{
         old.pollCounts[params["option"]]++;

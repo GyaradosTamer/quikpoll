@@ -133,12 +133,11 @@ img.omlet_third {
     padding-bottom:5px;
 }
 #other_answer {
-    float:left;
 }
 #custom_answer {
     margin-top:15px;
     margin-bottom:23px;
-    /*width:270px;*/
+    width:270px;
     min-height:42px;
     text-align:center;
     vertical-align:middle;
@@ -151,11 +150,9 @@ img.omlet_third {
     line-height:24px;
 }
 #other_submit {
-    float:left;
     margin-left: 5px;
-    margin-top:15px;
     margin-bottom:23px;
-    width:60px;
+    width:270px;
     min-height:42px;
     text-align:center;
     line-height:42px;
