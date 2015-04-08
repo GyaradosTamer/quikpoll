@@ -205,7 +205,6 @@ function functionForResponse(response) {
             else{
                 documentApi.update(myDocId, Update, { "option":response, "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
-            updateResults()
             showPollResults(response);
         }
     };
@@ -356,7 +355,7 @@ function showPollResults(response) {
             $("#app").append('<div class="result_row"><div class="result_option">'+letter+':</div><div class="result_bar" style="width:'+width+'"></div><div class="result_count" id="result_count_'+i+'">' + pollCounts[i] + '</div><div class="clear"></div><div class="result_answer">'+response+'</div></div>');
         }
     }
-    $("#app").append('<div id="poll_your_response">'+ you_vote + ' ' + answerLetter + ': ' + answer + '<br>' + poll_result + ': <span id="poll_count">' + totalVotes + ' ' + responseString + '</span></div>');
+    $("#app").append('<div id="poll_your_response">'+ you_vote + ' ' + answerLetter + ': ' + answer + '<br>' + poll_result + ': <span id="poll_count">' + totalVotes + ' ' + pollCounts.length + ' ' + myDoc.poll + ' ' + responseString + '</span></div>');
     $("#app").append('<div id="share">'+share_vote+'</div>');
 
     var share = function() {
