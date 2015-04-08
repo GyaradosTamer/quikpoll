@@ -307,9 +307,9 @@ function showJustPollResults() {
 }
 
 // show the results after having voted
-function showPollResults(response) { 
-    var answer = myDoc.poll['response'+response];
-    var answerLetter = String.fromCharCode(65 + response);
+function showPollResults(responSU) { 
+    var answer = myDoc.poll['response'+responSU];
+    var answerLetter = String.fromCharCode(65 + responSU);
     var pollCounts = myDoc.pollCounts;
     var response_text = i18n.t("Response");
     var responses_text = i18n.t("Responses");
@@ -357,7 +357,7 @@ function showPollResults(response) {
             $("#app").append('<div class="result_row"><div class="result_option">'+letter+':</div><div class="result_bar" style="width:'+width+'"></div><div class="result_count" id="result_count_'+i+'">' + pollCounts[i] + '</div><div class="clear"></div><div class="result_answer">'+response+'</div></div>');
         }
     }
-    $("#app").append('<div id="poll_your_response">'+ you_vote + ' ' + answerLetter + ': ' + answer + '<br>' + poll_result + ': <span id="poll_count">' + totalVotes + ' ' + pollCounts.length + ' ' + responseString + '</span></div>');
+    $("#app").append('<div id="poll_your_response">'+ you_vote + ' ' + answerLetter + ': ' + answer + '<br>' + poll_result + ': <span id="poll_count">' + totalVotes + ' ' + responseString + '</span></div>');
     $("#app").append('<div id="share">'+share_vote+'</div>');
 
     var share = function() {
