@@ -98,6 +98,7 @@ function Update(old, params) {
         //old.poll.responses.push(params["new_response"]);
         var time = new Date().getTime();
         old.voters[params.voter.principal] = {"name":params.voter.name, "vote":params["option"], "time":time};
+        responseCount++;
     }
     else{
         old.pollCounts[params["option"]]++;
