@@ -203,7 +203,7 @@ function functionForResponse(response) {
                     return;
                 }
                 myDoc.poll['response' + response] = $('textarea#custom_answer').val();
-                myDoc.pollCounts[response] = 1;
+                myDoc.pollCounts.push(1);
                 documentApi.update(myDocId, Update, { "option":response, "new_response": $('textarea#custom_answer').val(), "voter":Omlet.getIdentity() }, ReceiveUpdate);
             }
             else{
